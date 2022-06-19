@@ -1,0 +1,134 @@
+<mat-card>
+    <mat-card-title>
+        <mat-icon>account_circle</mat-icon> Mi Perfil
+    </mat-card-title>
+    <mat-card-content>
+        <div class="box">
+            <!--Caja de datos del usuario tipo empleado-->
+            <div class="item-box-menu">
+                <mat-card class="other">
+                    <mat-card-title class="font-minus">
+                        <mat-card-content>
+                            <div *ngFor="let Detalle of listDetalle" >
+                                <app-usuario-detalle [dataDetalle]="Detalle"></app-usuario-detalle>
+                            </div> 
+                         </mat-card-content> 
+                    </mat-card-title> 
+                    
+                    <mat-card-content>
+                        
+                        <div class="img-circle">
+                            <img class="img" src="assets/imgs/perfil.png">
+                        </div>
+                    </mat-card-content>
+                    <button mat-flat-button color="primary" (click)="CompletarRegistro()" *ngIf="Status == 1 ">Completar Registro</button>
+                    <button mat-flat-button color="primary" disabled="true"*ngIf="Status == 1 ">Cuenta en verificacion</button>
+                    <button mat-flat-button color="primary" (click)="ModificarRegistro()" *ngIf="Status == 2 ">Modificar Datos de contacto</button> 
+                </mat-card>
+                
+            </div>
+            
+            <!--Caja de datos del usuario tipo empleado-->
+        <div class=" item-box-content">
+            <mat-card-content>
+            <mat-tab-group style=" text-align: center;" *ngIf="tipoUser == 2">
+                <div class="div-xs">
+                <mat-tab label="Experiencia Laboral">
+                    <mat-card class="other left-text">
+                       <!--ciclo para mostrar la informacion laboral del empleado-->
+                       <h4>Lista de experiecia laboral </h4>
+                        <h4 *ngIf="listExperienciaLaboral.length == 0">Agregar conocimiento o Experiencia laboral</h4>
+                        <mat-card-content>
+                            <div *ngFor="let experiencia of listExperienciaLaboral">
+                                <app-experiencia-detalle [data]="experiencia"></app-experiencia-detalle>
+                            </div>
+                        </mat-card-content>
+                        <button mat-flat-button color="primary" (click)="agregar()">Agregar</button>
+                    </mat-card>
+                </mat-tab>
+                </div>
+                <div class="div-xs">
+                <mat-tab label="Publicar servicios"> 
+                    <mat-card class="other left-text">
+                        <h4>Lista de servicios </h4>
+                        <h4 *ngIf="listServiciosuser.length == 0">Publicar Servicios</h4>
+                        <mat-card-content>
+                            <div *ngFor="let servicios of listServiciosuser">
+                                <app-vacantedetalle [dataVacante]="servicios"></app-vacantedetalle>
+                            </div> 
+                         </mat-card-content> 
+                        <button mat-flat-button color="primary" (click)="PublicarVacante()">Publicar</button>
+                    </mat-card>
+                </mat-tab>
+                </div>
+                <div class="div-xs">
+                <mat-tab label="Third"> Content 3 </mat-tab>
+                </div>
+            </mat-tab-group>
+        </mat-card-content>
+        </div>
+            <div class="item-box-content" *ngIf="tipoUser == 4">
+                <mat-card class="other left-text">
+                    <mat-card-title class="font-minus">
+                        Experiencia Laboral
+                    </mat-card-title>
+                   <!--ciclo para mostrar la informacion laboral del empleado-->
+                   <h4>Lista de experiecia laboral </h4>
+                    <h4 *ngIf="listExperienciaLaboral.length == 0">Agregar conocimiento o Experiencia laboral</h4>
+                    <mat-card-content>
+                        <div *ngFor="let experiencia of listExperienciaLaboral">
+                            <app-experiencia-detalle [data]="experiencia"></app-experiencia-detalle>
+                        </div>
+                    </mat-card-content>
+                    <button mat-flat-button color="primary" (click)="agregar()">Agregar</button>
+                </mat-card>
+                <!-- <mat-card class="other left-text">
+                    <mat-card-title class="font-minus">
+                        Trabajos
+                    </mat-card-title>
+                    <h4>Lista de Trabajos anteriores </h4>
+                    <mat-card-content>
+                    </mat-card-content>
+                    <button mat-flat-button color="primary">Agregar</button>
+                </mat-card> -->
+                <mat-card class="other left-text">
+                    <mat-card-title class="font-minus">
+                        Publicar servicios
+                    </mat-card-title>
+                    <h4>Lista de servicios </h4>
+                    <h4 *ngIf="listServiciosuser.length == 0">Publicar Servicios</h4>
+                    <mat-card-content>
+                        <div *ngFor="let servicios of listServiciosuser">
+                            <app-vacantedetalle [dataVacante]="servicios"></app-vacantedetalle>
+                        </div> 
+                     </mat-card-content> 
+                    <button mat-flat-button color="primary" (click)="PublicarVacante()">Publicar</button>
+                </mat-card>
+                <!-- <mat-card class="other left-text">
+                    <mat-card-title class="font-minus">
+                        Educacion
+                    </mat-card-title>
+                    <h4>Agregar nivel de estudios</h4>
+                    <mat-card-content>
+                    </mat-card-content>
+                    <button mat-flat-button color="primary">Agregar</button>
+                </mat-card> -->
+            </div>
+            <div class="item-box-content"  *ngIf="tipoUser == 3 || tipoUser == 4">
+                <mat-card class="other left-text">
+                    <mat-card-title class="font-minus">
+                        Ofertas Laborales
+                    </mat-card-title>
+                    <h4 *ngIf="listOfertasLaborales.length == 0">Agregar Ofertas Laborales</h4>
+                    <mat-card-content>
+                        <div *ngFor="let oferta of listOfertasLaborales">
+                            <app-ofertas-laborales [data]="oferta"></app-ofertas-laborales>
+                        </div>
+                    </mat-card-content>
+                    <button mat-flat-button color="primary" (click)="agregarOferta()">Agregar</button>
+                </mat-card>
+            </div>
+        </div>
+    </mat-card-content>
+    
+</mat-card>

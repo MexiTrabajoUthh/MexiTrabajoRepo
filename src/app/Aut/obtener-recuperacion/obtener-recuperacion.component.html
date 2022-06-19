@@ -1,0 +1,27 @@
+<mat-card>
+    <form [formGroup]="form">
+        <mat-card-title>Recuperar Constraseña</mat-card-title>
+        <mat-card-content>
+            <div class="box">
+                <div class="item-box-img">
+                    <img class="img" src="assets/imgs/RecContraseña.png" height="250px" width="250px"
+                        alt="Photo of a Shiba Inu">
+                </div>
+                <div class="item-box recuperar">
+                    <mat-form-field appearance="outline" class="input-xs">
+                        <mat-label>Correo Electronico</mat-label>
+                        <input matInput placeholder="Ejemplo@ejemplo.com" formControlName="email" required
+                            autocomplete="Off">
+                    </mat-form-field>
+                    <div class="example-spacer">
+                        <button mat-raised-button color="primary" (click)="RecuperarPorPreguntaSecreta()">Recuperar por pregunta secreta</button>
+                    </div>
+                    <br>
+                    <div class="example-spacer">
+                        <button mat-raised-button color="primary" (click)="request()" [disabled]="!form.valid">Recuperar</button>
+                    </div>
+                </div>
+            </div>
+        </mat-card-content>
+    </form>
+</mat-card>

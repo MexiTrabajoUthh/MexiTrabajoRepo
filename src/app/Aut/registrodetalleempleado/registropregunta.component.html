@@ -1,0 +1,33 @@
+<mat-card>
+    <form [formGroup]="form">
+        <mat-card-title>
+            Registro de pregunta secreta
+        </mat-card-title>
+        <mat-dialog-content>
+            <mat-form-field appearance="outline" class="complete">
+                <mat-label>Correo</mat-label>
+                <input matInput type="text" autocomplete="off" placeholder="Ejemplo@ejemplo.com" formControlName="varEmail">
+                <mat-error>Obligatorio</mat-error>
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="complete" >
+                <mat-label>Pregunta</mat-label>
+                <mat-select formControlName="intIdPregunta"  (selectionChange)="onChange($event.value)">
+                <mat-option *ngFor="let cu of cuestions" [value]="cu.id">
+                    {{cu.viewValue}}
+                </mat-option>
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="complete">
+                <mat-label>Respuesta</mat-label>
+                <input matInput type="text" autocomplete="off" placeholder="Respuesta" formControlName="varRespuesta">
+                <mat-error>Obligatorio</mat-error>
+            </mat-form-field>
+            
+            <div class="controls-right">
+                <button mat-flat-button color="primary">
+                    <mat-icon>save</mat-icon> Guardar 
+                </button>                
+            </div>
+        </mat-dialog-content>
+    </form>
+</mat-card>

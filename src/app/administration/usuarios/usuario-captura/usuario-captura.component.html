@@ -1,0 +1,42 @@
+<div class="contenedor">
+    <div class="detalle">
+        <mat-toolbar color="primary">
+            <span>{{ title}}</span>
+        </mat-toolbar>
+        <mat-dialog-content>
+        <form [formGroup]="form">
+            <mat-form-field appearance="outline">
+                <mat-label>Usuario</mat-label>
+                <input matInput formControlName="usuario" autocomplete="off" placeholder="Usuario">
+                <mat-error>Obligatorio</mat-error>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>Contraseña</mat-label>
+                <input matInput type="password" formControlName="password" autocomplete="off" minlength="8"  placeholder="Contraseña">
+                <mat-error *ngIf="form.get('password')?.hasError('required')">Debe ingresar la contraseña</mat-error>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>Email</mat-label>
+                <input matInput formControlName="email" autocomplete="off" placeholder="Email">
+                <mat-error>Introduzca un correo valido</mat-error>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-select formControlName="rol" autocomplete="off" placeholder="Rol">
+                    <mat-option [value]="1">Admin</mat-option>
+                    <mat-option [value]="2">Empleado</mat-option>
+                    <mat-option [value]="3">Empleador</mat-option>
+                </mat-select>
+                <mat-error>Obligatorio</mat-error>
+            </mat-form-field>
+            <div class="controls-right">
+                <button mat-flat-button color="primary" [disabled]="!form.valid" (click)="save()">
+                    <mat-icon>save</mat-icon>Guardar
+                </button>
+                <button mat-flat-button color="warn" (click)="cancelar()">
+                    <mat-icon>cancel</mat-icon>Cancelar
+                </button>
+            </div>
+        </form>
+        </mat-dialog-content>
+    </div>
+</div>

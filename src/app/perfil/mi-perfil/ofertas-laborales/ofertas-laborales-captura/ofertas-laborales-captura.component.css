@@ -1,0 +1,24 @@
+.medium {
+    margin-right: 5px;
+    width: 48%;
+}
+.complete {
+    width: 100%;
+}
+.controls-right {
+    text-align: right;
+}
+button {
+    margin-right: 5px;
+}
+
+.example-month-picker .mat-calendar-period-button {
+    pointer-events: none;
+}
+
+.example-month-picker .mat-calendar-arrow {
+    display: none;
+}
+mat-dialog-content{
+    margin-top: 30px;
+}

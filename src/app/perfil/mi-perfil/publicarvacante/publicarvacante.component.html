@@ -1,0 +1,51 @@
+<mat-card>
+    <form [formGroup]="form">
+        <mat-card-title>
+            Publicar Servicios
+        </mat-card-title>
+        <mat-dialog-content>
+            <mat-form-field appearance="outline" class="complete">
+                <mat-label>Nombre del trabajo</mat-label>
+                <input matInput type="text" autocomplete="off" placeholder="Nombre del trabajo" formControlName="varNombreTrabahjo">
+                <mat-error>Obligatorio</mat-error>
+            </mat-form-field>
+            <mat-form-field appearance="outline"  class="complete">
+                <mat-label>Descripcion</mat-label>
+                <input matInput type="text" autocomplete="off" placeholder="Descripcion" formControlName="varDescripcion">
+                <mat-error>Obligatorio</mat-error>
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="complete">
+                <mat-label>Experiencia</mat-label>
+                <input matInput type="text" autocomplete="off" placeholder="habilidades extras para el trabajo" formControlName="varHabilidades">
+                <mat-error>Obligatorio</mat-error>
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="medium">
+                <mat-label>Horario</mat-label>
+                <input matInput autocomplete="off" placeholder="Horario" formControlName="varHorario">
+                <mat-error>Obligatorio</mat-error>
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="medium">
+                <mat-label>Sueldo estiamdo</mat-label>
+                <input matInput type="number" autocomplete="off" placeholder="Sueldo estiamdo" formControlName="decSalario">
+                <mat-error>Obligatorio</mat-error>
+            </mat-form-field>
+            <mat-form-field appearance="outline" >
+                <mat-label>Tipo de Servicio</mat-label>
+                <mat-select formControlName="intTipoTrabajo"  (selectionChange)="onChange($event.value)">
+                <mat-option *ngFor="let op of options" [value]="op.id">
+                    {{op.viewValue}}
+                </mat-option>
+                </mat-select>
+                
+            </mat-form-field>
+            <div class="controls-right">
+                <button mat-flat-button color="primary" (click)="agregar()">
+                    <mat-icon>save</mat-icon> Agregar
+                </button>
+                <button mat-flat-button color="primary" (click)="cancelar()">
+                    <mat-icon>cancel</mat-icon> Cancelar
+                </button>
+            </div>
+        </mat-dialog-content>
+    </form>
+</mat-card>

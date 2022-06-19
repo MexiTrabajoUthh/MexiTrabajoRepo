@@ -1,0 +1,33 @@
+<mat-card>
+
+    <mat-card-content>
+        <mat-card-title>Bienvenido al chat en linea</mat-card-title>
+        <mat-card class="chat">
+            <div *ngFor="let m of mensajes" style="margin-top: 2px;">
+                <mat-card class="message right-chat text-right" *ngIf="m.intIdTipoMensaje == 1">
+                    <mat-card-content style="text-align: right;">
+                        <label class="empleado"> {{m.varMensaje}}</label>
+                    </mat-card-content>
+                </mat-card>
+                <mat-card class="message left-chat text-left" *ngIf="m.intIdTipoMensaje == 2">
+                    <mat-card-content style="text-align: left; margin: 0px ;">
+                        <label class="usuario"> {{m.varMensaje}}</label>
+                    </mat-card-content>
+                </mat-card>
+            </div>
+        </mat-card>
+    </mat-card-content>
+    <mat-card-actions>
+        <form [formGroup]="form" style="text-align: right;">
+            <mat-form-field appearance="outline" class="complete">
+                <mat-label>Mensaje</mat-label>
+                <input matInput autocomplete="off" placeholder="Mensaje" formControlName="mensaje">
+                <mat-error>Obligatorio</mat-error>
+            </mat-form-field>
+
+            <button mat-flat-button color="primary" (click)="enviar()">
+                <mat-icon>send</mat-icon> Enviar
+            </button>
+        </form>
+    </mat-card-actions>
+</mat-card>

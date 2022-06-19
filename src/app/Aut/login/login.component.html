@@ -1,0 +1,41 @@
+<mat-card>
+    <form [formGroup]="formLogin">
+        <mat-card-title>Inicia sesión</mat-card-title>
+        <mat-card-subtitle>¿No tiene cuenta? <a routerLink="/menuregistro"> Registrese ahora</a>
+        </mat-card-subtitle>
+        <mat-card-content>
+            <div class="box">
+                <div class="item-box img-margin">
+                    <img class="img" src="assets/imgs/login1.png" alt="Photo of a Shiba Inu">
+                </div>
+                <div class="item-box img-margin">
+                    <mat-form-field appearance="outline" class="input-xs">
+                        <mat-label>Correo electrónico</mat-label>
+                        <input matInput placeholder="Correo electrónico " formControlName="userName"
+                            required autocomplete="Off" trim maxlength="40">
+                        <mat-error *ngIf="formLogin.get('userName')?.hasError('required')">Ingresar correo electrónico</mat-error>
+
+                        <mat-error *ngIf="formLogin.get('userName')?.hasError('validUser')">Correo electronico invalido</mat-error>
+                    </mat-form-field>
+
+                    <mat-form-field appearance="outline" class="input-xs">
+                        <mat-label>Ingresar contraseña</mat-label>
+                        <input matInput placeholder="Contraseña" formControlName="password" required type="password"
+                            trim maxlength="16">
+                        <mat-error *ngIf="formLogin.get('password')?.hasError('required')">Debe ingresar la
+                            contraseña</mat-error>
+                        <mat-error *ngIf="formLogin.get('password')?.hasError('validPassword')">Formato incorrecto
+                        </mat-error>
+                    </mat-form-field>
+                    
+                    <p></p>
+                    <mat-card-subtitle><a routerLink="/recuperar">Recuperar Contraseña</a></mat-card-subtitle>
+                    <div class="example-spacer">
+                        <button mat-raised-button color="primary" [disabled]="!formLogin.valid"
+                            (click)="login()">Iniciar sesión</button>
+                    </div>
+                </div>
+            </div>
+        </mat-card-content>
+    </form>
+</mat-card>

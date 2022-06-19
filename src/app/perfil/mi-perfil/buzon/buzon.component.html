@@ -1,0 +1,47 @@
+<mat-card>
+    <mat-card-title>Buzón</mat-card-title>
+    <mat-card-content  style="margin-top: 30px;">
+        <form [formGroup]="formBusqueda" *ngIf="isAdmin">
+            
+            <mat-form-field appearance="outline">
+                <mat-label>Empleado</mat-label>
+                <input matInput formControlName="usuario" placeholder="Usuario">
+            </mat-form-field>
+            <!-- <mat-form-field appearance="outline">
+                <mat-label>Estatus</mat-label>
+                <mat-select formControlName="estatus" placeholder="Estatus">
+                    <mat-option [value]="-1">Todos</mat-option>
+                    <mat-option [value]="1">Leidos</mat-option>
+                    <mat-option [value]="0">No Leidos</mat-option>
+                </mat-select>
+            </mat-form-field> -->
+            <button mat-flat-button color="primary" (click)="onFormSubmit()">
+                <mat-icon>search</mat-icon>Buscar
+            </button>
+            <!-- <button mat-flat-button color="primary" (click)="agregar()">
+                <mat-icon>add</mat-icon>Agregar
+            </button> -->
+        </form>
+        <table mat-table matSort [dataSource]="dataSource" class="mat-elevation-z8">
+            <ng-container matColumnDef="id">
+                <th mat-header-cell *matHeaderCellDef> No. </th>
+                <td mat-cell *matCellDef="let element"> {{element.intIdBuzon}} </td>
+            </ng-container>
+            <ng-container matColumnDef="administrador">
+                <th mat-header-cell *matHeaderCellDef> Administrador </th>
+                <td mat-cell *matCellDef="let element"> {{element.administrador}} </td>
+            </ng-container>
+            <ng-container matColumnDef="empleado">
+                <th mat-header-cell *matHeaderCellDef> Empleado </th>
+                <td mat-cell *matCellDef="let element"> {{element.empleado}} </td>
+            </ng-container>
+            <ng-container matColumnDef="dtFechaBuzon">
+                <th mat-header-cell *matHeaderCellDef> Fecha </th>
+                <td mat-cell *matCellDef="let element"> {{element.dtFechaBuzon}} </td>
+            </ng-container>
+           
+            <tr mat-header-row *matHeaderRowDef="displayedColumns;sticky: true"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+    </mat-card-content>
+</mat-card>

@@ -1,0 +1,83 @@
+<mat-card>
+    <form [formGroup]="formRegistro">
+    <mat-card-title>Crea tu cuenta (Empresa)</mat-card-title>
+    <mat-card-subtitle>Si usted es un empleado<a routerLink="/registro"> click aqui!!!</a></mat-card-subtitle>
+    <mat-card-content>
+        <div class="box">
+            <div class="item-box-img">
+                <img class="img" src="assets/imgs/mark.png" 
+                    alt="Photo of a Shiba Inu">
+            </div>
+            <div class="item-box">
+                <mat-form-field appearance="outline" class="input-md">
+                    <mat-label>Nombre</mat-label>
+                    <input matInput placeholder="Nombre" formControlName="username" required autocomplete="Off">
+                </mat-form-field>
+                <mat-form-field appearance="outline" style="width: 100%;">
+                    <mat-label>Tipo de Persona</mat-label>
+                    <mat-select formControlName="intIdTipoUsuario"  (selectionChange)="onChange($event.value)">
+                    <mat-option *ngFor="let tipe of tipo" [value]="tipe.id">
+                        {{tipe.viewValue}}
+                    </mat-option>
+                    </mat-select>
+                    
+                </mat-form-field>
+                <mat-form-field appearance="outline" class="input-xs">
+                    <mat-label>Correo Electronico</mat-label>
+                    <input matInput placeholder="Ejemplo@ejemplo.com" formControlName="email" required
+                        autocomplete="Off">
+                    <mat-error>Debe ingresar un correo
+                        valido</mat-error>
+                </mat-form-field>
+                <mat-form-field appearance="outline" class="input-xs">
+                    <mat-label>Contraseña</mat-label>
+                    <input type="password" matInput placeholder="Contraseña" formControlName="password" required
+                        autocomplete="Off">
+                    <mat-error *ngIf="formRegistro.get('password')?.hasError('required')">Debe ingresar la
+                        contraseña</mat-error>
+                    <mat-error *ngIf="formRegistro.get('password')?.hasError('minlength')">ingrese una contraseña de
+                        8 caracteres minimo</mat-error>
+                </mat-form-field>
+                <mat-form-field appearance="outline" class="input-xs">
+                    <mat-label>Confirmar contraseña</mat-label>
+                    <input type="password" matInput placeholder="Confirmar contraseña"
+                        formControlName="confirmpassword" required autocomplete="Off">
+                </mat-form-field>
+
+                <div class="example-spacer">
+                    <button mat-raised-button color="primary" [disabled]="!formRegistro.valid"
+                        (click)="Registrar()">Registrar</button>
+                </div>
+                <!-- <mat-form-field appearance="outline" class="input-md">
+                    <mat-label>Nombre Empresa</mat-label>
+                    <input matInput placeholder="Nombre Empresa">
+                    <mat-hint>Hint</mat-hint>
+                </mat-form-field>
+                <mat-form-field appearance="outline" class="input-md">
+                    <mat-label>Responsable</mat-label>
+                    <input matInput placeholder="Responsable">
+                    <mat-hint>Hint</mat-hint>
+                </mat-form-field>
+                <mat-form-field appearance="outline" class="input-xs">
+                    <mat-label>Correo Electronico</mat-label>
+                    <input matInput placeholder="Ejemplo@ejemplo.com">
+                    <mat-hint>Hint</mat-hint>
+                </mat-form-field>
+                <mat-form-field appearance="outline" class="input-xs">
+                    <mat-label>Contraseña</mat-label>
+                    <input matInput type="password" placeholder="Minimo 6 caracteres">
+                    <mat-hint>Hint</mat-hint>
+                </mat-form-field>
+                <mat-form-field appearance="outline" class="input-xs">
+                    <mat-label>Confirmar contraseña</mat-label>
+                    <input matInput type="password" placeholder="Confirmar contraseña">
+                    <mat-hint>Hint</mat-hint>
+                </mat-form-field>
+                <div class="example-spacer">
+                    <button mat-raised-button color="primary" (click)="Error400()">Registrar</button>
+                </div> -->
+            </div>
+        </div>
+    </mat-card-content>
+</form>
+</mat-card>

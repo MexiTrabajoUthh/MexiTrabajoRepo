@@ -1,0 +1,66 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~ngx-toastr/toastr.css";
+@import '../node_modules/ngx-owl-carousel-o/lib/styles/prebuilt-themes/owl.carousel.css'; 
+@import '../node_modules/ngx-owl-carousel-o/lib/styles/prebuilt-themes/owl.theme.default.css';
+html,
+body {
+    height: 100%;
+    margin: 0;
+}
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+body {
+    --warn-color: #662727;
+    --warn-lighter-color: #f2b3b3;
+    --warn-darker-color: #6b3333;
+    --text-warn-color: #{$light-primary-text};
+    --text-warn-lighter-color: #{$dark-primary-text};
+    --text-warn-darker-color: #{$light-primary-text};
+}
+
+.mat-flat-button.mat-primary {
+    background-color: #3d5061;
+}
+
+.mat-flat-button.mat-warn {
+    background-color: #a72e2e;
+}
+.text-left{
+  text-decoration: none;
+  text-align: left;
+}
+.text-right{
+  text-decoration: none;
+  text-align: right;
+}
+/* mat-warn: (
+  main: #d50000,
+  lighter: #f2b3b3,
+  darker: #c40000,
+  200: #d50000, // For slide toggle,
+  contrast : (
+    main: $light-primary-text,
+    lighter: $dark-primary-text,
+    darker: $light-primary-text,
+  )
+);
+theme-warn: mat-palette($mat-warn, main, lighter, darker);;
+
+theme: mat-light-theme($theme-primary, $theme-accent, $theme-warn);
+altTheme: mat-dark-theme($theme-primary, $theme-accent, $theme-warn);
+
+// Theme Init
+@include angular-material-theme($theme);
+
+.theme-alternate {
+  @include angular-material-theme($altTheme);
+
+ 
+} */
+
+img:hover{
+  transform: scale(1.25);
+}

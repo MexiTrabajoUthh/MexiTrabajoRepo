@@ -1,0 +1,55 @@
+<mat-card>
+    <form [formGroup]="form">
+        <mat-card-title>
+            Oferta Laboral
+        </mat-card-title>
+        <mat-dialog-content>
+            <mat-form-field appearance="outline" class="complete">
+                <mat-label>Puesto</mat-label>
+                <input matInput type="text" autocomplete="off" placeholder="Cargo" formControlName="varPuesto">
+                <mat-error>Obligatorio</mat-error>
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="complete">
+                <mat-label>Descripción</mat-label>
+                <input matInput type="text" autocomplete="off" placeholder="Descripcion" formControlName="varDescripcion">
+                <mat-error>Obligatorio</mat-error>
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="complete">
+                <mat-label>Ubicación</mat-label>
+                <input matInput autocomplete="off" placeholder="ubicacion" formControlName="varUbicacion">
+                <mat-error>Obligatorio</mat-error>
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="complete">
+                <mat-label>Requisitos</mat-label>
+                <input matInput type="text" autocomplete="off" pleaceholder="Requisitos" formControlName="varRequisitos">
+                <mat-error>Obligatorio</mat-error>
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="medium">
+                <mat-label>Sexo</mat-label>
+                <mat-select formControlName="intTipoTrabajo"  (selectionChange)="onChange($event.value)" >
+                <mat-option *ngFor="let t of tipo" [value]="t.id">
+                    {{t.viewValue}}
+                </mat-option>
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="medium">
+                <mat-label>Horario</mat-label>
+                <input matInput type="text" autocomplete="off" pleaceholder="Horario" formControlName="intTurno">
+                <mat-error>Obligatorio</mat-error>
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="medium">
+                <mat-label>Propuesta Salarial</mat-label>
+                <input matInput type="number" autocomplete="off" placeholder="salario" formControlName="decSalario">
+                <mat-error>Obligatorio</mat-error>
+            </mat-form-field>
+            <div class="controls-right">
+                <button mat-flat-button color="primary" (click)="agregar()">
+                    <mat-icon>save</mat-icon> Agregar
+                </button>
+                <button mat-flat-button color="primary" (click)="cancelar()">
+                    <mat-icon>cancel</mat-icon> Cancelar
+                </button>
+            </div>
+        </mat-dialog-content>
+    </form>
+</mat-card>

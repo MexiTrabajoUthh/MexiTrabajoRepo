@@ -1,0 +1,57 @@
+<mat-card [formGroup]="form">
+    <mat-card-content>
+        <mat-form-field appearance="outline">
+            <!--Filtro por tipo de servicio profesionista o oficio, sexo del trabajador-->
+            <mat-label>Puesto o Área laboral</mat-label>
+            <input matInput placeholder="Nombre de Trabajo" autocomplete="off" formControlName="varNombreTrabahjo" maxlength="30">
+            <!-- <mat-icon matSuffix>sentiment_very_satisfied</mat-icon> -->
+            <!-- <mat-hint>Hint</mat-hint> -->
+            
+        </mat-form-field>
+        
+        <mat-form-field appearance="outline" style="width: 20%">
+            <mat-label>Tipo de Empleado</mat-label>
+            <mat-select formControlName="intTipoTrabajo"  (selectionChange)="onChange($event.value)" (selectionChange)="getServicios()">
+            <mat-option *ngFor="let op of options" [value]="op.id">
+                {{op.viewValue}}
+            </mat-option>
+            </mat-select>
+            
+        </mat-form-field>
+        <mat-form-field appearance="outline" style="width: 20%;">
+            <mat-label>Sexo</mat-label>
+            <mat-select formControlName="intSexo"  (selectionChange)="onChangeS($event.value)" (selectionChange)="getServicios()">
+            <mat-option *ngFor="let sex of sexo" [value]="sex.id">
+                {{sex.viewValue}}
+            </mat-option>
+            </mat-select>
+            
+        </mat-form-field>
+         <button mat-raised-button color="primary" (click)="getServicios()">Buscar Empleados</button>
+    </mat-card-content> 
+</mat-card>
+<mat-card class="empleos" *ngIf="mostrarDetalle">
+    <div *ngFor="let service of listServices; let i = index;">
+        <h3>{{service.varNombre + ' '+ service.varAPatern + ' '+ service.varAMatern  + ' - ' + service.varNombreTrabahjo}}</h3>
+        <mat-card-content>
+            <p>
+                
+            </p>
+            <p *ngIf="service.mostrar">
+                Descripcion: <br>
+                {{service.varDescripcion}}
+                <br>
+                Habilidades:<br> 
+                {{service.varHabilidades}}
+                <br>
+                Horario:<br>
+            {{service.varHorario}}
+            
+            </p>
+        </mat-card-content>
+        <mat-card-actions class="text-right">
+            <p>{{service.decSalario | currency}}</p>
+            <button mat-flat-button color="primary" (click)="mostrarDetalle(service)">Detalle</button>
+        </mat-card-actions>
+    </div>
+</mat-card>

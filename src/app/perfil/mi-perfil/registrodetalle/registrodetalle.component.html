@@ -1,0 +1,168 @@
+<mat-card>
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+        <mat-card-title *ngIf="tipoUser == 2">Datos del perfil Empleado</mat-card-title>
+        <mat-card-title *ngIf="tipoUser == 3">Datos del perfil Empleador(Persona Fisica)</mat-card-title>
+        <mat-card-title *ngIf="tipoUser == 4">Datos del perfil Empleador(Persona Moral)</mat-card-title>
+        <mat-dialog-content>
+            <mat-card-content>
+                <mat-tab-group>
+                    <mat-tab label=" Informacion personal ">
+                            <div class="div-xs">
+                                <mat-form-field appearance="outline" class="complete" >
+                                    <mat-label *ngIf="tipoUser == 2 || tipoUser == 3">Nombre</mat-label>
+                                    <mat-label *ngIf="tipoUser == 4">Nombre de la Organizacion</mat-label>
+                                    <input matInput placeholder="Nombre" autocomplete="off" formControlName="varNombre" maxlength="70" >
+                                    <mat-error *ngIf="form.get('varNombre')?.hasError('required')">Registre su nombre</mat-error>
+                                    <mat-error *ngIf="form.get('varNombre')?.hasError('minlength')">Porfavor ingrese un nombre valido</mat-error>
+                                </mat-form-field>
+                                <mat-form-field appearance="outline" class="medium" *ngIf="tipoUser == 2 || tipoUser == 3">
+                                    <mat-label>Aellido Paterno</mat-label>
+                                    <input matInput placeholder="Apellido Paterno" autocomplete="off" formControlName="varAPatern" maxlength="70" >
+                                    <mat-error *ngIf="form.get('varAPatern')?.hasError('required')">Registre Apellido Paterno</mat-error>
+                                    <mat-error *ngIf="form.get('varAPatern')?.hasError('minlength')">Porfavor ingrese un apellido valido</mat-error>
+                                </mat-form-field>
+                                <mat-form-field appearance="outline" class="complete" *ngIf="tipoUser == 4">
+                                    <mat-label>RazonSocial</mat-label>
+                                    <input matInput placeholder="Razon Social" autocomplete="off" formControlName="varRazonSocial" maxlength="70" >
+                                    <mat-error *ngIf="form.get('varAPatern')?.hasError('required')">Registre Apellido Paterno</mat-error>
+                                    <mat-error *ngIf="form.get('varAPatern')?.hasError('minlength')">Porfavor ingrese un apellido valido</mat-error>
+                                </mat-form-field>
+                                <mat-form-field appearance="outline" class="medium" *ngIf="tipoUser == 2 || tipoUser == 3">
+                                    <mat-label>Aellido Materno</mat-label>
+                                    <input matInput placeholder="Apellido Materno"autocomplete="off" formControlName="varAMatern" maxlength="70" >
+                                    <mat-error *ngIf="form.get('varAMatern')?.hasError('required')">Registre Apellido Materno</mat-error>
+                                    <mat-error *ngIf="form.get('varAMatern')?.hasError('minlength')">Porfavor ingrese un apellido valido</mat-error>
+                                </mat-form-field>
+                                <mat-form-field appearance="outline" class="medium" *ngIf="tipoUser == 2 || tipoUser == 3" >
+                                    <mat-label>Fecha Nacimiento</mat-label>
+                                    <input matInput [matDatepicker]="dp" [formControl]="dateNac" >
+                                    <mat-datepicker-toggle matSuffix [for]="dp"></mat-datepicker-toggle>
+                                    <mat-datepicker #dp startView="multi-year" (yearSelected)="chosenYearHandler($event)"
+                                        (monthSelected)="chosenMonthHandler($event, dp)"  panelClass="example-month-picker">
+                                    </mat-datepicker>
+                                </mat-form-field>
+                                <mat-form-field appearance="outline" class="medium" *ngIf="tipoUser == 4">
+                                    <mat-label>Fecha Fundacion</mat-label>
+                                    <input matInput [matDatepicker]="dp" [formControl]="dateFun" >
+                                    <mat-datepicker-toggle matSuffix [for]="dp"></mat-datepicker-toggle>
+                                    <mat-datepicker #dp startView="multi-year" (yearSelected)="chosenYearHandlerF($event)"
+                                        (monthSelected)="chosenMonthHandlerF($event, dp)"  panelClass="example-month-picker">
+                                    </mat-datepicker>
+                                </mat-form-field>
+                                <mat-form-field appearance="outline" class="medium"  *ngIf="tipoUser == 2 || tipoUser == 3">
+                                    <mat-label>Sexo</mat-label>
+                                    <mat-select formControlName="intgenero"  (selectionChange)="onChangeS($event.value)" >
+                                    <mat-option *ngFor="let sex of sexo" [value]="sex.id">
+                                        {{sex.viewValue}}
+                                    </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                                <mat-form-field appearance="outline" class="medium" *ngIf="tipoUser == 2 || tipoUser == 3" >
+                                    <mat-label>CURP</mat-label>
+                                    <input matInput placeholder="CURP" autocomplete="off" formControlName="varCurp" maxlength="18">
+                                    <mat-error *ngIf="form.get('varCurp')?.hasError('required')">Registre CURP</mat-error>
+                                    <mat-error *ngIf="form.get('varCurp')?.hasError('minlength')">Formato de CURP no valido</mat-error>
+                                </mat-form-field>
+                                <mat-form-field appearance="outline" class="medium">
+                                    <mat-label>RFC</mat-label>
+                                    <input matInput placeholder="RFC" autocomplete="off" formControlName="varRfc" maxlength="13">
+                                    <!-- <mat-error *ngIf="form.get('varRfc')?.hasError('required')">Formato de RFC no valido</mat-error> -->
+                                    <mat-error *ngIf="form.get('varRfc')?.hasError('minlength')">Formato de RFC no valido</mat-error>
+                                </mat-form-field>
+                                
+                            </div>
+                        
+                    </mat-tab>
+                    <mat-tab label="Domicilio">
+                        <div class="div-xs" >
+                            <mat-form-field appearance="outline" class="medium">
+                                <mat-label>Codigó Postal</mat-label>
+                            <input matInput type="number" placeholder="Codigó Postal" autocomplete="off" formControlName="varCp"  maxlength="5"
+                                oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" /> 
+                                <mat-error *ngIf="form.get('varCp')?.hasError('required')">Registre Codigo Postal</mat-error>
+                                <mat-error *ngIf="form.get('varCp')?.hasError('min')">CP no valido</mat-error>
+                            </mat-form-field>
+                            <mat-form-field appearance="outline" class="medium">
+                                <mat-label>Estado</mat-label>
+                                <input matInput placeholder="Estado" autocomplete="off" formControlName="varEstado" maxlength="25">
+                                <mat-error *ngIf="form.get('varEstado')?.hasError('required')">Registre Estado </mat-error>
+                                <mat-error *ngIf="form.get('varEstado')?.hasError('minlength')">Estado no valido</mat-error>
+                            </mat-form-field>
+                            <mat-form-field appearance="outline" class="medium">
+                                <mat-label>Municipio</mat-label>
+                                <input matInput placeholder="Municipio " autocomplete="off" formControlName="varMunicipio" maxlength="100">
+                                <mat-error *ngIf="form.get('varMunicipio')?.hasError('required')">Registre Estado </mat-error>
+                                <mat-error *ngIf="form.get('varMunicipio')?.hasError('minlength')">Estado no valido</mat-error>
+                            </mat-form-field>
+                            <mat-form-field appearance="outline" class="medium">
+                                <mat-label>Calle</mat-label>
+                                <input matInput placeholder="calle" autocomplete="off" formControlName="varCalle" maxlength="50">
+                                <mat-error *ngIf="form.get('varCalle')?.hasError('required')">Registre Calle</mat-error>
+                                <mat-error *ngIf="form.get('varCalle')?.hasError('minlength')">Calle no valida</mat-error>
+                            </mat-form-field>
+                            <mat-form-field appearance="outline" class="medium">
+                                <mat-label>Colonia</mat-label>
+                                <input matInput placeholder="Colonia" autocomplete="off" formControlName="varColonia" maxlength="50">
+                                <mat-error *ngIf="form.get('varColonia')?.hasError('required')">Registre Calle</mat-error>
+                                <mat-error *ngIf="form.get('varColonia')?.hasError('minlength')">Calle no valida</mat-error>
+                            </mat-form-field>
+                            <mat-form-field appearance="outline" class="medium" >
+                                <mat-label>referencia domicilio</mat-label>
+                                <input matInput placeholder="Referencia domicilio" autocomplete="off" formControlName="varReferencia" maxlength="150">
+                                <mat-error *ngIf="form.get('varReferencia')?.hasError('required')">Registre Referencias</mat-error>
+                                <mat-error *ngIf="form.get('varReferencia')?.hasError('minlength')">Especifique referencias</mat-error>
+                            </mat-form-field>
+                            <mat-form-field appearance="outline" class="medium"> 
+                                <mat-label>No. Interior</mat-label >
+                                <input matInput placeholder="No interior" autocomplete="off" formControlName="varNoint" maxlength="5">
+                                <mat-error>Indique numero interior</mat-error>                                
+                            </mat-form-field>
+                            <mat-form-field appearance="outline" class="medium">
+                                <mat-label>No. Exterior</mat-label>
+                                <input matInput placeholder="No. Exterior" autocomplete="off" formControlName="varNoExterior" maxlength="5">
+                                <mat-error>Ingrese Numero exterior</mat-error>
+                            </mat-form-field>
+                           
+                        </div>
+                    </mat-tab>
+                    <mat-tab label="Informacion de contacto">
+                        <div class="div-xs">
+                            <mat-form-field appearance="outline">
+                                <mat-label>No. Telefonico</mat-label>
+                                <input matInput placeholder="Numero telefonó" type="number" autocomplete="off" formControlName="varNoTelefono"  maxlength="10"
+                                oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" >
+                                <mat-error *ngIf="form.get('varNoTelefono')?.hasError('required')">Registre Numero</mat-error>
+                                <mat-error *ngIf="form.get('varNoTelefono')?.hasError('min')">Ingrese un Numero valido</mat-error>
+                            </mat-form-field>
+                            <mat-form-field appearance="outline" *ngIf="tipoUser == 2 || tipoUser == 3" >
+                                <mat-label>No. Telefonico de referencia</mat-label>
+                                <input matInput placeholder="Numero telefonó" type="number" autocomplete="off" formControlName="varNoTelfR1" maxlength="10"
+                                oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" >
+                                <mat-error *ngIf="form.get('varNoTelfR1')?.hasError('required')">Registre Numero de referencia</mat-error>
+                                <mat-error *ngIf="form.get('varNoTelfR1')?.hasError('min')">Ingrese un Numero valido</mat-error>
+                            </mat-form-field>
+                            <mat-form-field appearance="outline" *ngIf="tipoUser == 2 || tipoUser == 3" >
+                                <mat-label>No. Telefonico de referencia</mat-label>
+                                <input matInput placeholder="Numero telefonó" type="number" autocomplete="off" formControlName="varNoTelfR2" maxlength="10"
+                                oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" >
+                                <mat-error *ngIf="form.get('varNoTelfR2')?.hasError('required')">Registre Numero de referencia</mat-error>
+                                <mat-error *ngIf="form.get('varNoTelfR2')?.hasError('min')">Ingrese un Numero valido</mat-error>
+                            </mat-form-field>
+                            
+                        </div>
+                        <div class="example-spacer">
+                            <div class="controls-right">
+                                <button mat-flat-button color="primary" (click)="GuardarDetalle()" >
+                                    <mat-icon>save</mat-icon> Guardar
+                                </button>
+                                <button mat-flat-button color="primary" (click)="cancelar()">
+                                    <mat-icon>cancel</mat-icon> Cancelar
+                                </button>
+                            </div>
+                        </div>
+                    </mat-tab>
+                </mat-tab-group>
+            </mat-card-content>
+        </mat-dialog-content>
+    </form>
+</mat-card>

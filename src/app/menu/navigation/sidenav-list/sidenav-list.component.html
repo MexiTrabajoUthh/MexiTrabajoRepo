@@ -1,0 +1,32 @@
+<mat-list role="list">
+  <mat-list-item role="listitem">
+    <a routerLink="/home" (click)="onSidenavClose('')">
+      <mat-icon>home</mat-icon> Mexi-Trabajo
+    </a>
+  </mat-list-item>
+  <mat-list-item role="listitem">
+    <a routerLink="/empresas" (click)="onSidenavClose('')">
+      <mat-icon>account_balance</mat-icon><span class="nav-caption">Empleos</span>
+    </a>
+  </mat-list-item>
+  <mat-list-item role="listitem">
+    <a routerLink="/personas" (click)="onSidenavClose('')">
+      <mat-icon>assignment_ind</mat-icon><span class="nav-caption">Trabajadores</span>
+    </a>
+  </mat-list-item>
+  <mat-list-item role="listitem">
+    <a routerLink="/nosotros" (click)="onSidenavClose('')">
+      <mat-icon>info</mat-icon><span class="nav-caption">Acerca de</span>
+    </a>
+  </mat-list-item>
+  <mat-list-item role="listitem">
+    <a routerLink="/login" (click)="onSidenavClose('')">
+      <mat-icon>lock_open</mat-icon><span class="nav-caption">Login</span>
+    </a>
+  </mat-list-item>
+  <mat-list-item role="listitem">
+    <a routerLink="/menuregistro" (click)="onSidenavClose('')">
+      <mat-icon>create_icon</mat-icon><span class="nav-caption">Registro</span>
+    </a>
+  </mat-list-item>
+</mat-list>

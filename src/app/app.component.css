@@ -1,0 +1,43 @@
+mat-sidenav-container, mat-sidenav-content, mat-sidenav{
+    height: 100%;
+}
+mat-sidenav{
+    width: 250px;
+    height: 100%;
+}
+main{
+    padding: 10px;
+    margin-left: 150px;
+    margin-right: 150px;
+    width: auto;
+    height:850px;
+
+}
+app-ng-dynamic-breadcrumb{
+    text-decoration: none;
+    background-color: #fafafa;
+}
+.custom-bread-crumb{
+    text-decoration: none;
+    background-color: #fafafa;
+}
+@media(max-width: 1360px) {
+    main{
+        padding: 5px;
+        margin-left: 1px;
+        margin-right: 1px;
+        width: auto;
+        height: 550px;
+    }
+    
+}
+
+@media(max-width: 955px) {
+    main{
+        padding: 5px;
+        margin-left: 1px;
+        margin-right: 1px;
+        width: auto;
+    }
+    
+}

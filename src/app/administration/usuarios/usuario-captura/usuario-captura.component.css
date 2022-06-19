@@ -1,0 +1,23 @@
+.mat-toolbar-single-row {
+    height: 34px;
+    background-color: #3d5061;
+}
+mat-form-field {
+    font-size: 14px;
+    margin-left: 5px;
+    margin-right: 5px;
+    width: 450px;
+}
+form{
+    margin-top: 10px;
+    
+}
+.controls-right {
+    text-align: right;
+}
+button{
+    margin-right: 5px;
+}
+.control{
+    width: 100%;
+}

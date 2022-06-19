@@ -1,0 +1,138 @@
+mat-card{
+    margin-left: 170px;
+    margin-right: 170px;
+    margin-top: 60px;
+    min-height: 60%;
+    height: auto;     
+  
+      /* width: auto;
+      text-align: center;
+      margin-top: 10px; */
+  
+}
+.container-home
+{
+  background-color: black;
+  width: 100%;
+  height: auto;
+  position: absolute;
+  
+}
+.left-home{
+  background-color: pink;
+  min-height: 400px;
+  height: auto;
+  max-height: 500px;
+  float: left;
+  text-align: center;
+  width: 50%;
+  display: inline;
+}
+.rigth-home{
+  background-color: cadetblue;
+  min-height: 400px;
+  height: auto;
+  float: left;
+  text-align: center;
+  width: 50%;
+  display: inline;
+}
+.left-img{
+  width: 300px; 
+  height: 400px;
+  line-height: 100%; 
+  margin: 0px auto; 
+  text-align: center; 
+  background-color:brown;
+}
+.img-first{
+  width: 80%;
+  height: auto;
+}
+
+.container-img{
+  height: 400px;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.div-md{
+    text-decoration: none;
+    width: 45%;
+}
+.input-md{
+    text-decoration: none;
+    width: 100%;
+}
+.mat-card-c{
+    text-align: center;
+}
+.input-xs{
+    width: 100%;
+}
+.example-spacer{
+    text-align: right;
+}
+
+.img{
+    margin: 40px 20px 20px 20px;
+    border-radius: 20px;
+    width:90%;
+    height:90%;
+    background-size: 70% 70%;
+    background-repeat:no-repeat;
+    background-size: cover;
+    }
+  .img img{
+    width: 100%;
+  }
+  .imgs{
+    margin: 10px 20px 20px 20px;
+    border-radius: 20px;
+    width:70%;
+    height:70%;
+    background-size: 100% 100%;
+    background-repeat:no-repeat;
+    background-size: cover;
+    width: 132px;
+    height: 108px;
+    }
+  .img .imgs{
+    width: 100%;
+  }
+  .rigth{
+      float: left;
+      text-align: center;
+      width: 50%;
+      display: inline;
+  }
+  .left{
+    height: 140px;
+    float: left;
+    text-align: center;
+    width: 50%;
+    display: inline;
+}
+  .imgr{
+    margin:10px 20px 20px 20px;
+    border-radius: 20px;
+    width:70%;
+    height:70%;
+    background-size: 100% 100%;
+    background-size: cover;
+    }
+  .img .imgr{
+    width: 100%;
+  }
+@media(max-width:955px)
+{
+    mat-card{
+        margin-left: 5px;
+        margin-right: 5px;
+        margin-top: 20px;
+        min-height: 440px;
+        height: auto;
+    }
+    
+}

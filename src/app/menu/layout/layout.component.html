@@ -1,0 +1,46 @@
+<mat-sidenav-container (backdropClick)="sidenav.close()" class="full-container">
+
+  <mat-sidenav #sidenav (keydown.escape)="sidenav.close()" disableClose class="sidenav" mode="side">
+    <mat-toolbar color="accent" *ngIf="logged">
+      <mat-toolbar-row>
+        <div class="col text-center">Menú</div>
+      </mat-toolbar-row>
+    </mat-toolbar>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <mat-toolbar style="font-size: 1000px;" color="accent" *ngIf="logged">
+      <mat-toolbar-row>
+        <button mat-button (click)="toggle()" matTooltip="Menú">
+          <mat-icon>menu</mat-icon>
+        </button>
+        <span class="brand">{{title}}</span>
+        <span class="spacer"></span>
+        <div>
+          <span class="welcome d-none d-sm-inline">Bienvenid@</span>
+          <button mat-button [matMenuTriggerFor]="appMenu" matTooltip="Opciones">
+            {{user.name}}
+          </button>
+        </div>
+
+      </mat-toolbar-row>
+    </mat-toolbar>
+
+    <div class="container-fluid">
+      <div class="row flex-xl-nowrap">
+        <main class="container">
+         
+          <ng-content></ng-content>
+        </main>
+      </div>
+    </div>
+
+  </mat-sidenav-content>
+</mat-sidenav-container>
+
+<mat-menu #appMenu="matMenu">
+  <div class="dropdown-divider"></div>
+  <a mat-menu-item href="javascript:void(0)" (click)="cerrarSesion()">
+    <mat-icon>power_settings_new</mat-icon> Cerrar Sesión
+  </a>
+</mat-menu>
