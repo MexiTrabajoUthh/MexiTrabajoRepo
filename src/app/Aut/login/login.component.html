@@ -15,7 +15,7 @@
                             required autocomplete="Off" trim maxlength="40">
                         <mat-error *ngIf="formLogin.get('userName')?.hasError('required')">Ingresar correo electrónico</mat-error>
 
-                        <mat-error *ngIf="formLogin.get('userName')?.hasError('validUser')">Correo electronico invalido</mat-error>
+                        <mat-error *ngIf="formLogin.get('userName')?.hasError('validUser')">Correo electronico no valido</mat-error>
                     </mat-form-field>
 
                     <mat-form-field appearance="outline" class="input-xs">
